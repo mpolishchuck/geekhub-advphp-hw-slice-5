@@ -1,0 +1,3 @@
+paul_maxwell_guestbook_homepage:
+    pattern:  /
+    defaults: { _controller: PaulMaxwellGuestbookBundle:Default:index }
