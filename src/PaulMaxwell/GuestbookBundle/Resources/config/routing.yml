@@ -1,3 +1,9 @@
 paul_maxwell_guestbook_homepage:
     pattern:  /
+    defaults: { _controller: PaulMaxwellGuestbookBundle:Default:index, page: 1 }
+
+paul_maxwell_guestbook_page:
+    pattern: /{page}
     defaults: { _controller: PaulMaxwellGuestbookBundle:Default:index }
+    requirements:
+        page: "^[0-9]+$"

@@ -1,0 +1,29 @@
+{% extends "PaulMaxwellGuestbookBundle::layout.html.twig" %}
+
+{% block body %}
+<div class="navbar navbar-default navbar-fixed-top">
+    <div class="pull-left navbar-brand">{{ 'Simple guestbook'|trans }}</div>
+    <div class="pull-right navbar-brand">{{ 'Simple guestbook'|trans }}</div>
+</div>
+<div class="container" style="padding: 60px 0;">
+    {% for post in posts %}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            {{ post.name }} ({{ post.email }})
+        </div>
+        <div class="panel-body">
+            {{ post.messageBody }}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<div class="navbar navbar-default navbar-fixed-bottom">
+    <div class="text-center">
+        <div class="pull-left navbar-brand">{{ 'Simple guestbook'|trans }}</div>
+        <div class="pull-right navbar-brand">{{ 'Simple guestbook'|trans }}</div>
+        <div class="paginator">
+            {{ knp_pagination_render(posts) }}
+        </div>
+    </div>
+</div>
+{% endblock body %}
