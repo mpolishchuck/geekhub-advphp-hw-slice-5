@@ -37,6 +37,16 @@ class Message
     protected $messageBody;
 
     /**
+     * @ORM\Column(name="posted_at", type="datetime")
+     */
+    protected $postedAt;
+
+    public function __construct()
+    {
+        $this->postedAt = new \DateTime();
+    }
+
+    /**
      * @param string $email
      */
     public function setEmail($email)
@@ -90,5 +100,21 @@ class Message
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * @param \DateTime $postedAt
+     */
+    public function setPostedAt($postedAt)
+    {
+        $this->postedAt = $postedAt;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getPostedAt()
+    {
+        return $this->postedAt;
     }
 }
