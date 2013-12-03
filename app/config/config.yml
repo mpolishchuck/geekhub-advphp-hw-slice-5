@@ -70,4 +70,4 @@ braincrafted_bootstrap:
     less_filter: none
 
 knp_paginator:
-    page_range: 8
+    page_range: 5

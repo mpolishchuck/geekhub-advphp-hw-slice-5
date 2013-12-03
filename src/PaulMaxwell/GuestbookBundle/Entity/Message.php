@@ -23,16 +23,22 @@ class Message
 
     /**
      * @ORM\Column(type="string")
+     * @Constraint\Regex(
+     *      pattern="/^[a-zA-Z]+$/",
+     *      message="You can use letters only"
+     * )
      */
     protected $name;
 
     /**
      * @ORM\Column(type="string")
+     * @Constraint\Email
      */
     protected $email;
 
     /**
      * @ORM\Column(name="message_body", type="text")
+     * @Constraint\Length(min="100")
      */
     protected $messageBody;
 

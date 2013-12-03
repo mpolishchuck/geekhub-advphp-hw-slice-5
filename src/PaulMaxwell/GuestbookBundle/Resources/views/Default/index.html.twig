@@ -1,11 +1,27 @@
 {% extends "PaulMaxwellGuestbookBundle::layout.html.twig" %}
 
 {% block body %}
-<div class="navbar navbar-default navbar-fixed-top">
+<div class="navbar navbar-default navbar-fixed-top upper-head">
     <div class="pull-left navbar-brand">{{ 'Simple guestbook'|trans }}</div>
     <div class="pull-right navbar-brand">{{ 'Simple guestbook'|trans }}</div>
+    <div class="clearfix"></div>
+    <div class="container">
+        {{ form_start(form) }}
+        <div class="col-sm-2 text-right">{{ form_label(form.name) }}</div>
+        <div class="col-sm-3 text-left">{{ form_widget(form.name) }}</div>
+        <div class="col-sm-2 text-right">{{ form_label(form.email) }}</div>
+        <div class="col-sm-3 text-left">{{ form_widget(form.email) }}</div>
+        <div class="col-sm-2 text-left">{{ form_widget(form.post) }}</div>
+        <div class="clearfix"></div>
+        <div class="col-sm-5">{{ form_errors(form.name) }}</div>
+        <div class="col-sm-5">{{ form_errors(form.email) }}</div>
+        <div class="col-sm-2">&nbsp;</div>
+        <div class="clearfix"></div>
+        <div class="col-sm-12">{{ form_row(form.messageBody) }}</div>
+        {{ form_end(form) }}
+    </div>
 </div>
-<div class="container" style="padding: 60px 0;">
+<div class="container posts-container">
     {% for post in posts %}
     <div class="panel panel-default">
         <div class="panel-heading">

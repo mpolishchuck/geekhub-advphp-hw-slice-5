@@ -14,7 +14,7 @@ class DefaultController extends Controller
         /**
          * @var Query $query
          */
-        $query = $manager->createQuery('SELECT t FROM PaulMaxwellGuestbookBundle:Message t');
+        $query = $manager->createQuery('SELECT t FROM PaulMaxwellGuestbookBundle:Message t ORDER BY t.postedAt DESC');
 
         /**
          * @var Paginator $paginator
@@ -25,8 +25,20 @@ class DefaultController extends Controller
             $page
         );
 
+        $form = $this->createForm('post');
+
+        $form->handleRequest($this->getRequest());
+        if ($form->isSubmitted() && $form->isValid()) {
+            $message = $form->getData();
+            $manager->persist($message);
+            $manager->flush();
+
+            return $this->redirect($this->generateUrl('paul_maxwell_guestbook_homepage'));
+        }
+
         return $this->render('PaulMaxwellGuestbookBundle:Default:index.html.twig', array(
             'posts' => $pagination,
+            'form' => $form->createView(),
         ));
     }
 }
