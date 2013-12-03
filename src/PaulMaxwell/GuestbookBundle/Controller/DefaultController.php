@@ -3,6 +3,7 @@
 namespace PaulMaxwell\GuestbookBundle\Controller;
 
 use Doctrine\ORM\Query;
+use Knp\Bundle\PaginatorBundle\Pagination\SlidingPagination;
 use Knp\Component\Pager\Paginator;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -20,10 +21,15 @@ class DefaultController extends Controller
          * @var Paginator $paginator
          */
         $paginator = $this->get('knp_paginator');
+        /**
+         * @var SlidingPagination $pagination
+         */
         $pagination = $paginator->paginate(
             $query,
-            $page
+            $page,
+            $this->container->getParameter('posts_on_page_count')
         );
+        $pagination->setUsedRoute('paul_maxwell_guestbook_page');
 
         $form = $this->createForm('post');
 
