@@ -4,7 +4,7 @@ imports:
 
 framework:
     #esi:             ~
-    #translator:      { fallback: %locale% }
+    translator:      { fallback: %locale% }
     secret:          %secret%
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -68,3 +68,6 @@ swiftmailer:
 braincrafted_bootstrap:
     jquery_path: %kernel.root_dir%/../vendor/jquery/jquery/jquery-1.10.2.min.js
     less_filter: none
+
+knp_paginator:
+    page_range: 5

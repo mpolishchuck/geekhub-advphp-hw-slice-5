@@ -1,0 +1,13 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}{{ 'Welcome to simple guestbook!'|trans }}{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/paulmaxwellguestbook/css/style.css') }}">
+{% endblock %}
+
+{% block head_javascripts %}
+    <script type="text/javascript" src="{{ asset('js/jquery.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/bootstrap.js') }}"></script>
+{% endblock %}

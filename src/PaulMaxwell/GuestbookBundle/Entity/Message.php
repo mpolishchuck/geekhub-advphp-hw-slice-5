@@ -23,18 +23,34 @@ class Message
 
     /**
      * @ORM\Column(type="string")
+     * @Constraint\Regex(
+     *      pattern="/^[a-zA-Z]+$/",
+     *      message="You can use letters only"
+     * )
      */
     protected $name;
 
     /**
      * @ORM\Column(type="string")
+     * @Constraint\Email
      */
     protected $email;
 
     /**
      * @ORM\Column(name="message_body", type="text")
+     * @Constraint\Length(min="100")
      */
     protected $messageBody;
+
+    /**
+     * @ORM\Column(name="posted_at", type="datetime")
+     */
+    protected $postedAt;
+
+    public function __construct()
+    {
+        $this->postedAt = new \DateTime();
+    }
 
     /**
      * @param string $email
@@ -90,5 +106,21 @@ class Message
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * @param \DateTime $postedAt
+     */
+    public function setPostedAt($postedAt)
+    {
+        $this->postedAt = $postedAt;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getPostedAt()
+    {
+        return $this->postedAt;
     }
 }
