@@ -8,6 +8,22 @@
         <service id="form.type.post" class="PaulMaxwell\GuestbookBundle\Form\Type\PostType">
             <tag name="form.type" alias="post" />
         </service>
+
+        <service id="paul_maxwell_guestbook_bundle.new_message_notifier" class="PaulMaxwell\GuestbookBundle\EventListener\GuestbookListener">
+            <call method="setMailer">
+                <argument id="mailer" type="service" on-invalid="ignore" />
+            </call>
+            <call method="setLogger">
+                <argument id="logger" type="service" on-invalid="ignore" />
+            </call>
+            <call method="setAdminEmail">
+                <argument>%admin_email%</argument>
+            </call>
+            <call method="setTranslator">
+                <argument id="translator" type="service" on-invalid="ignore" />
+            </call>
+            <tag name="kernel.event_listener" event="paul_maxwell_guestbook_bundle.new_message_added" method="onMessageAdded" />
+        </service>
     </services>
 
 </container>

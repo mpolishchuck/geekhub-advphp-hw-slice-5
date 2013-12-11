@@ -5,6 +5,7 @@ namespace PaulMaxwell\GuestbookBundle\Controller;
 use Doctrine\ORM\Query;
 use Knp\Bundle\PaginatorBundle\Pagination\SlidingPagination;
 use Knp\Component\Pager\Paginator;
+use PaulMaxwell\GuestbookBundle\Event\NewMessageAddedEvent;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class DefaultController extends Controller
@@ -38,6 +39,14 @@ class DefaultController extends Controller
             $message = $form->getData();
             $manager->persist($message);
             $manager->flush();
+
+            $event = new NewMessageAddedEvent();
+            $event->setMessage($message);
+            /**
+             * @var \Symfony\Component\EventDispatcher\EventDispatcher $eventDispatcher
+             */
+            $eventDispatcher = $this->get('event_dispatcher');
+            $eventDispatcher->dispatch('paul_maxwell_guestbook_bundle.new_message_added', $event);
 
             return $this->redirect($this->generateUrl('paul_maxwell_guestbook_homepage'));
         }

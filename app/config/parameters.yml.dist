@@ -15,3 +15,4 @@ parameters:
     secret:            ThisTokenIsNotSoSecretChangeIt
 
     posts_on_page_count: 10
+    admin_email:         admin@test.local
