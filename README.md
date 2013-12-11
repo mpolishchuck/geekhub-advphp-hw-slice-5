@@ -1,4 +1,4 @@
-GeekHub Homework 8. The Simple Guestbook.
+GeekHub Homework 8-9. The Simple Guestbook.
 ========================
 
 ## Steps to deploy: ##
@@ -12,7 +12,8 @@ GeekHub Homework 8. The Simple Guestbook.
  ```
 to install assets
 5. Do not forget to deploy database structure and fixtures by executing
- ```
+ ~~~
  $ app/console doctrine:schema:create
  $ app/console doctrine:fixtures:load
- ```
+ ~~~
+6. Configure your mailer to receive new post notification ;)
