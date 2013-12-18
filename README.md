@@ -1,4 +1,4 @@
-GeekHub Homework 8-9. The Simple Guestbook.
+GeekHub Homework 8-10. The Simple Guestbook.
 ========================
 
 ## Steps to deploy: ##
