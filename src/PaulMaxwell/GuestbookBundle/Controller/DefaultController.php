@@ -56,4 +56,21 @@ class DefaultController extends Controller
             'form' => $form->createView(),
         ));
     }
+
+    public function removeAction($id, $page = 1)
+    {
+        $manager = $this->getDoctrine()->getManager();
+        $entity = $manager->getRepository('PaulMaxwell\GuestbookBundle\Entity\Message')->find($id);
+        $manager->remove($entity);
+        $manager->flush();
+
+        return $this->redirect(
+            $this->generateUrl(
+                'paul_maxwell_guestbook_page',
+                array(
+                    'page' => $page,
+                )
+            )
+        );
+    }
 }

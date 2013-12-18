@@ -12,6 +12,7 @@ use Gedmo\Mapping\Annotation as DoctrineExtension;
  *
  * @ORM\Entity
  * @ORM\Table(name="message")
+ * @DoctrineExtension\SoftDeleteable(fieldName="removedAt", timeAware=true)
  */
 class Message
 {
@@ -48,6 +49,11 @@ class Message
      * @DoctrineExtension\Timestampable(on="create")
      */
     protected $postedAt;
+
+    /**
+     * @ORM\Column(name="removed_at", type="datetime", nullable=true)
+     */
+    protected $removedAt;
 
     /**
      * @param string $email
@@ -119,5 +125,21 @@ class Message
     public function getPostedAt()
     {
         return $this->postedAt;
+    }
+
+    /**
+     * @param \DateTime $removedAt
+     */
+    public function setRemovedAt($removedAt)
+    {
+        $this->removedAt = $removedAt;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getRemovedAt()
+    {
+        return $this->removedAt;
     }
 }
