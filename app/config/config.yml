@@ -71,3 +71,8 @@ braincrafted_bootstrap:
 
 knp_paginator:
     page_range: 5
+
+stof_doctrine_extensions:
+    orm:
+        default:
+            timestampable: true

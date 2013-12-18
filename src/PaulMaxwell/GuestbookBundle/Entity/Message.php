@@ -4,6 +4,7 @@ namespace PaulMaxwell\GuestbookBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Constraint;
+use Gedmo\Mapping\Annotation as DoctrineExtension;
 
 /**
  * Class Message
@@ -44,13 +45,9 @@ class Message
 
     /**
      * @ORM\Column(name="posted_at", type="datetime")
+     * @DoctrineExtension\Timestampable(on="create")
      */
     protected $postedAt;
-
-    public function __construct()
-    {
-        $this->postedAt = new \DateTime();
-    }
 
     /**
      * @param string $email
