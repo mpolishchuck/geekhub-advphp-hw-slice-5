@@ -7,3 +7,9 @@ paul_maxwell_guestbook_page:
     defaults: { _controller: PaulMaxwellGuestbookBundle:Default:index }
     requirements:
         page: "^[0-9]+$"
+
+paul_maxwell_guestbook_remove:
+    pattern: /{page}/remove/{id}
+    defaults: { _controller: PaulMaxwellGuestbookBundle:Default:remove }
+    requirements:
+        page: "^[0-9]+$"
