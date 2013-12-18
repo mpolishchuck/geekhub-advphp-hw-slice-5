@@ -4,6 +4,7 @@ namespace PaulMaxwell\GuestbookBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Constraint;
+use Gedmo\Mapping\Annotation as DoctrineExtension;
 
 /**
  * Class Message
@@ -11,6 +12,7 @@ use Symfony\Component\Validator\Constraints as Constraint;
  *
  * @ORM\Entity
  * @ORM\Table(name="message")
+ * @DoctrineExtension\SoftDeleteable(fieldName="removedAt", timeAware=true)
  */
 class Message
 {
@@ -44,13 +46,14 @@ class Message
 
     /**
      * @ORM\Column(name="posted_at", type="datetime")
+     * @DoctrineExtension\Timestampable(on="create")
      */
     protected $postedAt;
 
-    public function __construct()
-    {
-        $this->postedAt = new \DateTime();
-    }
+    /**
+     * @ORM\Column(name="removed_at", type="datetime", nullable=true)
+     */
+    protected $removedAt;
 
     /**
      * @param string $email
@@ -122,5 +125,21 @@ class Message
     public function getPostedAt()
     {
         return $this->postedAt;
+    }
+
+    /**
+     * @param \DateTime $removedAt
+     */
+    public function setRemovedAt($removedAt)
+    {
+        $this->removedAt = $removedAt;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getRemovedAt()
+    {
+        return $this->removedAt;
     }
 }

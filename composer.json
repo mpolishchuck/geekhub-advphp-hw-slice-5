@@ -23,7 +23,8 @@
         "knplabs/knp-paginator-bundle": "2.3.3",
         "doctrine/doctrine-fixtures-bundle": "v2.2.0",
         "twbs/bootstrap": "v3.0.2",
-        "jquery/jquery": "1.10.2"
+        "jquery/jquery": "1.10.2",
+        "stof/doctrine-extensions-bundle": "v1.1.0"
     },
     "repositories": [
         {

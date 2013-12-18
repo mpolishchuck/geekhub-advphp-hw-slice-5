@@ -35,6 +35,9 @@
         </div>
         <div class="panel-body">
             {{ post.messageBody|nl2br }}
+            <div class="text-right">
+                <a href="{{ url('paul_maxwell_guestbook_remove', {'id':post.id, 'page':posts.currentPageNumber}) }}" class="btn btn-danger">{{ 'Remove'|trans }}</a>
+            </div>
         </div>
     </div>
     {% endfor %}
