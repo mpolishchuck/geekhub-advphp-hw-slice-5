@@ -24,6 +24,10 @@
             </call>
             <tag name="kernel.event_listener" event="paul_maxwell_guestbook_bundle.new_message_added" method="onMessageAdded" />
         </service>
+
+        <service id="paul_maxwell_guestbook_bundle.twig.bbcode_extension" class="PaulMaxwell\GuestbookBundle\Twig\Extension\BbCodeExtension">
+            <tag name="twig.extension" />
+        </service>
     </services>
 
 </container>
