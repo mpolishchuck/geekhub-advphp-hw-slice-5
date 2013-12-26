@@ -49,7 +49,7 @@ class GuestbookListener
 
         if ($this->logger instanceof LoggerInterface) {
             $this->logger->info($translator->trans(
-                'New post added into guestbook from {name} on {time}',
+                'paul_maxwell_guestbook.notification.log.body',
                 array(
                     '{name}' => $messagePost->getName(),
                     '{time}' => $messagePost->getPostedAt()->format('d.m.Y H:i:s'),
@@ -64,11 +64,11 @@ class GuestbookListener
             $message = $this->mailer->createMessage();
             $message->setTo(array($this->adminEmail));
             $message->setFrom($this->adminEmail);
-            $message->setSubject($translator->trans('New post notification'));
+            $message->setSubject($translator->trans('paul_maxwell_guestbook.notification.email.subject'));
             $message->setContentType('text/plain');
             $message->setCharset('utf-8');
             $message->setBody(
-                $translator->trans("New post added into guest book.\nSender: {name}\nTime: {time}\n\n{body}\n", array(
+                $translator->trans('paul_maxwell_guestbook.notification.email.body', array(
                     '{name}' => $messagePost->getName(),
                     '{time}' => $messagePost->getPostedAt()->format('d.m.Y H:i:s'),
                     '{body}' => $messagePost->getMessageBody(),

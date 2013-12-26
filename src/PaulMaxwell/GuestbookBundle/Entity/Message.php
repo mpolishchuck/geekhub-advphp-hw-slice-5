@@ -27,7 +27,7 @@ class Message
      * @ORM\Column(type="string")
      * @Constraint\Regex(
      *      pattern="/^[a-zA-Z]+$/",
-     *      message="You can use letters only"
+     *      message="paul_maxwell_guestbook.post.only_letters"
      * )
      */
     protected $name;
