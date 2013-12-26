@@ -1,4 +1,4 @@
-GeekHub Homework 8-10. The Simple Guestbook.
+GeekHub Homework 8-11. The Simple Guestbook.
 ========================
 
 ## Steps to deploy: ##
@@ -17,3 +17,4 @@ to install assets
  $ app/console doctrine:fixtures:load
  ~~~
 6. Configure your mailer to receive new post notification ;)
+7. You can use BB-codes in message formatting. Enjoy ;)

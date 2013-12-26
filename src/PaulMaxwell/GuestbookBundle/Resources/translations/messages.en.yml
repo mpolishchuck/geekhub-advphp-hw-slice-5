@@ -1,0 +1,14 @@
+paul_maxwell_guestbook:
+    greeting: 'Welcome to simple guestbook!'
+    title: 'Simple guestbook'
+    post:
+        name: 'Name'
+        email: 'E-mail'
+        message: 'Your message'
+        post: 'Fire!'
+    notification:
+        email:
+            body: "New post added into guest book.\nSender: {name}\nTime: {time}\n\n{body}\n"
+            subject: 'New post notification'
+        log:
+            body: 'New post added into guestbook from {name} on {time}'

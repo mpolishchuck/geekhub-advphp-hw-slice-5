@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "4725827c645e1fbfb6e2712fe8d36dd7",
+    "hash": "0612ad8c84f44bebafe4b000562cd45e",
     "packages": [
         {
             "name": "braincrafted/bootstrap-bundle",
@@ -1166,6 +1166,52 @@
                 "minification"
             ],
             "time": "2013-07-19 00:03:27"
+        },
+        {
+            "name": "mjohnson/decoda",
+            "version": "6.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/milesj/decoda.git",
+                "reference": "967c3888bf1159b9eb25710906860fd413920604"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/milesj/decoda/zipball/967c3888bf1159b9eb25710906860fd413920604",
+                "reference": "967c3888bf1159b9eb25710906860fd413920604",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Decoda": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Miles Johnson",
+                    "homepage": "http://milesj.me"
+                }
+            ],
+            "description": "A lightweight lexical string parser for BBCode styled markup.",
+            "homepage": "http://milesj.me/code/php/decoda",
+            "keywords": [
+                "HOOK",
+                "bbcode",
+                "decoda",
+                "filter",
+                "markup",
+                "parser"
+            ],
+            "time": "2013-12-01 06:08:36"
         },
         {
             "name": "monolog/monolog",

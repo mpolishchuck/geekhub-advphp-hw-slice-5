@@ -24,7 +24,8 @@
         "doctrine/doctrine-fixtures-bundle": "v2.2.0",
         "twbs/bootstrap": "v3.0.2",
         "jquery/jquery": "1.10.2",
-        "stof/doctrine-extensions-bundle": "v1.1.0"
+        "stof/doctrine-extensions-bundle": "v1.1.0",
+        "mjohnson/decoda": "6.3.1"
     },
     "repositories": [
         {
