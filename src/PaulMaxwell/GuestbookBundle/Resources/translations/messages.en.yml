@@ -12,3 +12,5 @@ paul_maxwell_guestbook:
             subject: 'New post notification'
         log:
             body: 'New post added into guestbook from {name} on {time}'
+    show_more: 'Show more'
+    show_previous: 'Show previous'
