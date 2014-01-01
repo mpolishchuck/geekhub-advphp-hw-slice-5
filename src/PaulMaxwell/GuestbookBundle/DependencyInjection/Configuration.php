@@ -21,7 +21,12 @@ class Configuration implements ConfigurationInterface
                 ->integerNode('page_max_post_count')
                 ->defaultValue(5)
                 ->end()
-                ->scalarNode('admin_email')
+                ->scalarNode('notification_email_receiver')
+                ->end()
+                ->scalarNode('notification_email_sender')
+                ->end()
+                ->booleanNode('notification_enabled')
+                ->defaultValue(true)
                 ->end()
             ->end();
 

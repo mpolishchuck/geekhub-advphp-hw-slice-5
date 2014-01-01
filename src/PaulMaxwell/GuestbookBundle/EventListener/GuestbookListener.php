@@ -11,7 +11,8 @@ class GuestbookListener
 {
     protected $mailer = null;
     protected $logger = null;
-    protected $adminEmail = null;
+    protected $emailSender = null;
+    protected $emailReceiver = null;
     protected $translator = null;
 
     public function setLogger(LoggerInterface $logger)
@@ -24,9 +25,14 @@ class GuestbookListener
         $this->mailer = $mailer;
     }
 
-    public function setAdminEmail($adminEmail)
+    public function setEmailReceiver($emailReceiver)
     {
-        $this->adminEmail = $adminEmail;
+        $this->emailReceiver = $emailReceiver;
+    }
+
+    public function setEmailSender($emailSender)
+    {
+        $this->emailSender = $emailSender;
     }
 
     public function setTranslator(TranslatorInterface $translator)
@@ -62,8 +68,8 @@ class GuestbookListener
              * @var \Swift_Message $message
              */
             $message = $this->mailer->createMessage();
-            $message->setTo(array($this->adminEmail));
-            $message->setFrom($this->adminEmail);
+            $message->setTo(array($this->emailReceiver));
+            $message->setFrom($this->emailSender);
             $message->setSubject($translator->trans('paul_maxwell_guestbook.notification.email.subject'));
             $message->setContentType('text/plain');
             $message->setCharset('utf-8');

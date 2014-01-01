@@ -25,7 +25,23 @@ class PaulMaxwellGuestbookExtension extends Extension
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');
 
-        $container->setParameter('paulmaxwell_guestbook.page_max_post_count', $config['page_max_post_count']);
-        $container->setParameter('paulmaxwell_guestbook.admin_email', $config['admin_email']);
+        if (!$config['notification_enabled'] &&
+            $container->hasDefinition('paul_maxwell_guestbook_bundle.new_message_notifier')
+        ) {
+            $container->removeDefinition('paul_maxwell_guestbook_bundle.new_message_notifier');
+        }
+
+        $container->setParameter(
+            'paulmaxwell_guestbook.page_max_post_count',
+            $config['page_max_post_count']
+        );
+        $container->setParameter(
+            'paulmaxwell_guestbook.notification_email_sender',
+            $config['notification_email_sender']
+        );
+        $container->setParameter(
+            'paulmaxwell_guestbook.notification_email_receiver',
+            $config['notification_email_receiver']
+        );
     }
 }

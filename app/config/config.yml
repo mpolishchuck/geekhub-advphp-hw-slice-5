@@ -84,4 +84,6 @@ stof_doctrine_extensions:
 
 paul_maxwell_guestbook:
     page_max_post_count: %posts_on_page_count%
-    admin_email: %admin_email%
+    notification_email_sender: %admin_email%
+    notification_email_receiver: %admin_email%
+    notification_enabled: true
