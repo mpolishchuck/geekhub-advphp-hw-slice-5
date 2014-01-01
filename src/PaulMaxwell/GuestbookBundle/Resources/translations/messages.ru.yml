@@ -14,3 +14,4 @@ paul_maxwell_guestbook:
             body: 'В гостевую книгу было добавлено сообщение от {name} в {time}'
     show_more: 'Показать ещё'
     show_previous: 'Показать предыдущие'
+    remove: 'Выпилить'

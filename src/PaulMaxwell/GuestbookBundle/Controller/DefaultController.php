@@ -5,6 +5,7 @@ namespace PaulMaxwell\GuestbookBundle\Controller;
 use Doctrine\ORM\Query;
 use PaulMaxwell\GuestbookBundle\Event\NewMessageAddedEvent;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
@@ -85,20 +86,24 @@ class DefaultController extends Controller
         }
     }
 
-    public function removeAction($id, $page = 1)
+    public function removeAction($id)
     {
         $manager = $this->getDoctrine()->getManager();
-        $entity = $manager->getRepository('PaulMaxwell\GuestbookBundle\Entity\Message')->find($id);
+        $entity = $manager->getRepository('PaulMaxwellGuestbookBundle:Message')->find($id);
         $manager->remove($entity);
         $manager->flush();
 
-        return $this->redirect(
-            $this->generateUrl(
-                'paul_maxwell_guestbook_page',
-                array(
-                    'page' => $page,
+        if ($this->getRequest()->isXmlHttpRequest()) {
+            return new Response();
+        } else {
+            $after_id = $this->getRequest()->get('after_id');
+
+            return $this->redirect(
+                $this->generateUrl(
+                    'paul_maxwell_guestbook_homepage',
+                    ($after_id === null) ? array() : array('after_id' => $after_id)
                 )
-            )
-        );
+            );
+        }
     }
 }
