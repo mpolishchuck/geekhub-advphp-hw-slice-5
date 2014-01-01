@@ -17,7 +17,7 @@
                 <argument id="logger" type="service" on-invalid="ignore" />
             </call>
             <call method="setAdminEmail">
-                <argument>%admin_email%</argument>
+                <argument>%paulmaxwell_guestbook.admin_email%</argument>
             </call>
             <call method="setTranslator">
                 <argument id="translator" type="service" on-invalid="ignore" />

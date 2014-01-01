@@ -19,7 +19,13 @@ class PaulMaxwellGuestbookExtension extends Extension
      */
     public function load(array $configs, ContainerBuilder $container)
     {
+        $configuration = new Configuration();
+        $config = $this->processConfiguration($configuration, $configs);
+
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');
+
+        $container->setParameter('paulmaxwell_guestbook.page_max_post_count', $config['page_max_post_count']);
+        $container->setParameter('paulmaxwell_guestbook.admin_email', $config['admin_email']);
     }
 }
