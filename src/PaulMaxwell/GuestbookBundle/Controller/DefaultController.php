@@ -55,12 +55,20 @@ class DefaultController extends Controller
          * @var \PaulMaxwell\GuestbookBundle\Entity\Message[] $posts
          */
         if ($after_id !== null) {
-            $posts = $repository->findSliceAfterId($after_id, $this->container->getParameter('posts_on_page_count'));
+            $posts = $repository->findSliceAfterId(
+                $after_id,
+                $this->container->getParameter('paulmaxwell_guestbook.page_max_post_count')
+            );
         } elseif ($before_id !== null) {
-            $posts = $repository->findSliceBeforeId($before_id, $this->container->getParameter('posts_on_page_count'));
+            $posts = $repository->findSliceBeforeId(
+                $before_id,
+                $this->container->getParameter('paulmaxwell_guestbook.page_max_post_count')
+            );
             $posts = array_reverse($posts);
         } else {
-            $posts = $repository->findFirstSlice($this->container->getParameter('posts_on_page_count'));
+            $posts = $repository->findFirstSlice(
+                $this->container->getParameter('paulmaxwell_guestbook.page_max_post_count')
+            );
         }
 
         if (count($posts) > 0) {
