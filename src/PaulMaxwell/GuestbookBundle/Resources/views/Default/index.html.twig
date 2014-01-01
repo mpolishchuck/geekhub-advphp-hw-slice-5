@@ -5,50 +5,16 @@
     <div class="pull-left navbar-brand">{{ 'paul_maxwell_guestbook.title'|trans }}</div>
     <div class="pull-right navbar-brand">{{ 'paul_maxwell_guestbook.title'|trans }}</div>
     <div class="clearfix"></div>
-    <div class="container">
-        {{ form_start(form) }}
-        <div class="col-sm-2 text-right">{{ form_label(form.name) }}</div>
-        <div class="col-sm-3 text-left">{{ form_widget(form.name) }}</div>
-        <div class="col-sm-2 text-right">{{ form_label(form.email) }}</div>
-        <div class="col-sm-3 text-left">{{ form_widget(form.email) }}</div>
-        <div class="col-sm-2 text-left">{{ form_widget(form.post) }}</div>
-        <div class="clearfix"></div>
-        <div class="col-sm-5">{{ form_errors(form.name) }}</div>
-        <div class="col-sm-5">{{ form_errors(form.email) }}</div>
-        <div class="col-sm-2">&nbsp;</div>
-        <div class="clearfix"></div>
-        <div class="col-sm-12">{{ form_row(form.messageBody) }}</div>
-        {{ form_end(form) }}
+    <div class="container" id="gb_form_post">
+        {{ include('PaulMaxwellGuestbookBundle:Default:_form.html.twig', {'form': form}) }}
     </div>
 </div>
-<div class="container posts-container">
-    {% for post in posts %}
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <div class="pull-left">
-                {{ post.name }} ({{ post.email }})
-            </div>
-            <div class="pull-right">
-                {{ post.postedAt|date('d.m.Y H:i:s') }}
-            </div>
-            <div class="clearfix"></div>
+<div class="container posts-container" id="posts-container">
+    {% if enableShowPrevious is defined and enableShowPrevious and posts|length > 0 %}
+        <div style="margin-bottom: 20px;">
+            <a id="gb_show_previous" class="btn btn-default col-md-12" href="{{ url('paul_maxwell_guestbook_homepage', {'before_id': posts|first.id}) }}">{{ 'paul_maxwell_guestbook.show_previous'|trans }}</a>
         </div>
-        <div class="panel-body">
-            {{ post.messageBody|bbcode|raw|nl2br }}
-            <div class="text-right">
-                <a href="{{ url('paul_maxwell_guestbook_remove', {'id':post.id, 'page':posts.currentPageNumber}) }}" class="btn btn-danger">{{ 'Remove'|trans }}</a>
-            </div>
-        </div>
-    </div>
-    {% endfor %}
-</div>
-<div class="navbar navbar-default navbar-fixed-bottom">
-    <div class="text-center">
-        <div class="pull-left navbar-brand">{{ 'paul_maxwell_guestbook.title'|trans }}</div>
-        <div class="pull-right navbar-brand">{{ 'paul_maxwell_guestbook.title'|trans }}</div>
-        <div class="paginator">
-            {{ knp_pagination_render(posts) }}
-        </div>
-    </div>
+    {% endif %}
+    {{ include('PaulMaxwellGuestbookBundle:Default:_posts.html.twig', {'posts': posts, 'disableShowMore': disableShowMore}) }}
 </div>
 {% endblock body %}

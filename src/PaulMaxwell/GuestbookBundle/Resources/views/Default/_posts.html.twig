@@ -1,0 +1,24 @@
+{% for post in posts %}
+    <div class="panel panel-default" id="post_{{ post.id }}">
+        <div class="panel-heading">
+            <div class="pull-left">
+                {{ post.name }} ({{ post.email }})
+            </div>
+            <div class="pull-right">
+                {{ post.postedAt|date('d.m.Y H:i:s') }}
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="panel-body">
+            {{ post.messageBody|bbcode|raw|nl2br }}
+            <div class="text-right">
+                <a href="{{ url('paul_maxwell_guestbook_remove', {'id':post.id, 'after_id': (posts|first.id + 1)}) }}" class="btn btn-danger">{{ 'paul_maxwell_guestbook.remove'|trans }}</a>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+{% if (disableShowMore is not defined or not disableShowMore) and posts|length > 0 %}
+<div>
+    <a id="gb_show_more" class="btn btn-default col-md-12" href="{{ url('paul_maxwell_guestbook_homepage', {'after_id': posts|last.id}) }}">{{ 'paul_maxwell_guestbook.show_more'|trans }}</a>
+</div>
+{% endif %}
