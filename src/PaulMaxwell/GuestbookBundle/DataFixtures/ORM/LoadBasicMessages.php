@@ -28,6 +28,17 @@ class LoadBasicMessages implements FixtureInterface, OrderedFixtureInterface
         }
 
         $manager->flush();
+
+        $messages = $manager->getRepository('PaulMaxwellGuestbookBundle:Message')->findAll();
+        $counter = 0;
+        foreach ($messages as $message) {
+            /**
+             * @var \PaulMaxwell\GuestbookBundle\Entity\Message $message
+             */
+            $message->setPostedAt(new \DateTime('2013-12-' . (++$counter)));
+        }
+
+        $manager->flush();
     }
 
     /**
