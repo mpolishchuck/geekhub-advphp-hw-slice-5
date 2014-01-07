@@ -73,11 +73,14 @@ braincrafted_bootstrap:
     jquery_path: %kernel.root_dir%/../vendor/jquery/jquery/jquery-1.10.2.min.js
     less_filter: none
 
-knp_paginator:
-    page_range: 5
-
 stof_doctrine_extensions:
     orm:
         default:
             timestampable: true
             softdeleteable: true
+
+paul_maxwell_guestbook:
+    page_max_post_count: %posts_on_page_count%
+    notification_email_sender: %admin_email%
+    notification_email_receiver: %admin_email%
+    notification_enabled: true

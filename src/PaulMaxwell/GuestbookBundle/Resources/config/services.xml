@@ -16,8 +16,11 @@
             <call method="setLogger">
                 <argument id="logger" type="service" on-invalid="ignore" />
             </call>
-            <call method="setAdminEmail">
-                <argument>%admin_email%</argument>
+            <call method="setEmailSender">
+                <argument>%paulmaxwell_guestbook.notification_email_sender%</argument>
+            </call>
+            <call method="setEmailReceiver">
+                <argument>%paulmaxwell_guestbook.notification_email_receiver%</argument>
             </call>
             <call method="setTranslator">
                 <argument id="translator" type="service" on-invalid="ignore" />

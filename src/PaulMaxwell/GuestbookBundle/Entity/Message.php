@@ -10,7 +10,7 @@ use Gedmo\Mapping\Annotation as DoctrineExtension;
  * Class Message
  * @package PaulMaxwell\GuestbookBundle\Entity
  *
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="PaulMaxwell\GuestbookBundle\Entity\MessageRepository")
  * @ORM\Table(name="message")
  * @DoctrineExtension\SoftDeleteable(fieldName="removedAt", timeAware=true)
  */
@@ -25,6 +25,7 @@ class Message
 
     /**
      * @ORM\Column(type="string")
+     * @Constraint\NotBlank()
      * @Constraint\Regex(
      *      pattern="/^[a-zA-Z]+$/",
      *      message="paul_maxwell_guestbook.post.only_letters"
@@ -34,12 +35,14 @@ class Message
 
     /**
      * @ORM\Column(type="string")
+     * @Constraint\NotBlank()
      * @Constraint\Email
      */
     protected $email;
 
     /**
      * @ORM\Column(name="message_body", type="text")
+     * @Constraint\NotBlank()
      * @Constraint\Length(min="100")
      */
     protected $messageBody;
